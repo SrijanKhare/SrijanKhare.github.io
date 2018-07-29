@@ -35,7 +35,7 @@ var parseDate = d3.timeFormat("%d-%b-%y").parse;
 
 // Set the ranges
 var x = d3.scaleTime().range([0, width]);
-var y = d3.scale.linear().range([height, 0]);
+var y = d3.scaleLinear().range([height, 0]);
 
 // Define the axes
 var xAxis = d3.svg.axis().scale(x)
