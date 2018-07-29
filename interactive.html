@@ -120,7 +120,7 @@
             .text("Global Overview of Sea Surface Temperature Change");
 
         var menu = d3.select("Dropdown")
-        menu.append("select").selectALL("option")
+        menu.append("select").selectAll("option")
           .data(headerNames).enter()
           .append("option").attr("value", function(d) {return d;})
           .text(function(d) {return d;})
