@@ -67,7 +67,7 @@
       // Get the data
       d3.csv("SST.csv", function(error, data) {
         if (error) throw error;
-
+        var headerNames = d3.keys(data[0]);
         // format the data
         data.forEach(function(d) {
             d.Year = parseTime(d.Year);
@@ -112,6 +112,12 @@
             .style("font-size", "16px")
             .style("text-decoration", "underline")
             .text("Global Overview of Sea Surface Temperature Change");
+
+        var menu = d3.select("Dropdown")
+        menu.append("select").selectALL("option")
+          .data(headerNames).enter()
+          .append("option").attr("value", function(d) {return d;})
+          .text(function(d) {return d;})
 
 
 
