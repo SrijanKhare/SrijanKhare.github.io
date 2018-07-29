@@ -73,7 +73,9 @@
       // Get the data
       d3.csv("SST.csv", function(error, data) {
         if (error) throw error;
+        var body = d3.select('body');
         var headerNames = d3.keys(data[0]);
+        console.log(headerNames);
         // format the data
         data.forEach(function(d) {
             d.Year = parseTime(d.Year);
