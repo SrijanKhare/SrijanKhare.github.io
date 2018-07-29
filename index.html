@@ -57,7 +57,7 @@
 
           // Scale the range of the data
           x.domain(d3.extent(data, function(d) { return d.Year; }));
-          y.domain([0, d3.max(data, function(d) { return d.Glob; })]);
+          y.domain([d3.min(data,fucntion(d) {return d.Glob}), d3.max(data, function(d) { return d.Glob; })]);
 
           // Add the valueline path.
           svg.append("path")
