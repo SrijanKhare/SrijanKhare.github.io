@@ -52,12 +52,12 @@
           // format the data
           data.forEach(function(d) {
               d.Year = parseTime(d.Year);
-              d.Glob = d.Glob;
+              d.Glob = +d.Glob;
           });
 
           // Scale the range of the data
           x.domain(d3.extent(data, function(d) { return d.Year; }));
-          y.domain([d3.min(data,fucntion(d) {return d.Glob}), d3.max(data, function(d) { return d.Glob; })]);
+          y.domain(d3.extent(data, function(d) { return d.Glob; }));
 
           // Add the valueline path.
           svg.append("path")
