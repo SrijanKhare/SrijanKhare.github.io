@@ -4,7 +4,9 @@
 <style> /* set the CSS */
 </style>
 
+
 <body>
+  <div id = "Dropdown"></div>
   <div class="container">
       <div class="navbar" id="navbar">
         <h1>CS498 - Trends in Surface Temperature</h1>
@@ -25,11 +27,57 @@
                    <h2 id="subtitle">Information</h3>
                    <p> Now you can use the drop-down menu to see a deviations of sea-surface temperatures based on a range of latitudes.
                     </p>
-                  <p> 
+                  <p>
                      You can hover over the Annotation bubbles to see more insight about the graph.
                   </p>
                </div>
              </div>
       </div>
     </div>
+    <script>
+    var margin = {top:50, right: 20, bottom: 50, left: 50},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    // parse the date / time
+    var parseTime = d3.timeParse("%Y");
+
+    // set the ranges
+    var x = d3.scaleTime().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+    // define the line
+    var valueline = d3.line()
+        .x(function(d) { return x(d.Year); })
+        .y(function(d) { return y(d.Glob); });
+
+    // append the svg obgect to the body of the page
+    // appends a 'group' element to 'svg'
+    // moves the 'group' element to the top left margin
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")")
+    d3.csv("SST.csv", function(error, data) {
+      if (error) throw error;
+      var headerNames = d3.keys(data[0]);
+      // format the data
+      data.forEach(function(d) {
+          d.Year = parseTime(d.Year);
+          d.Glob = +d.Glob;
+      });
+    var dropdown = d3.select("Dropdown")
+    dropdown
+      .append("select")
+      .selectAll("option")
+        .data(headerNames)
+        .enter()
+        .append("option")
+        .attr("value", function(d) { return d;})
+        .text(function(d) {return d;})
+
+
+    </script>
   <body>
