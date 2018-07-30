@@ -48,9 +48,9 @@ d3.csv("SST.csv", function(error, data){
 	var selection = elements[0];
 
 	var y = d3.scale.linear()
-			.domain([d3.min(data, function(d) {return d[selection]}), d3.max(data, function(d){
-				return +d[selection];
-			})])
+			.domain(d3.extent(data, function(d)) {
+				return d[selection]
+			})
 			.range([height, 0]);
 
 	var x = d3.scale.ordinal()
@@ -89,17 +89,22 @@ d3.csv("SST.csv", function(error, data){
 		.attr("class","rectangle")
 		.attr("width", width/data.length)
 		.attr("height", function(d){
-			return height - y(+d[selection]);
+			return Math.abs(y(d[selection]) - y(0));
 		})
 		.attr("x", function(d, i){
 			return (width / data.length) * i ;
 		})
 		.attr("y", function(d){
-			return y(+d[selection]);
+			if (d[selection] > 0){
+                return y(selection);
+            } else {
+                return y(0);
+            }
 		})
 		.append("title")
 		.text(function(d){
 			return d.Year + " : " + d[selection];
+
 		});
 
 	var selector = d3.select("#drop")
