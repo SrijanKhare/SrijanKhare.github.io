@@ -114,26 +114,21 @@ d3.csv("SST.csv", function(error, data){
         	selection = document.getElementById("dropdown");
 
         	y.domain([0, d3.max(data, function(d){
-				return +d[selection];})]);
+				return +d[selection.value];})]);
 
         	yAxis.scale(y);
 
         	d3.selectAll(".rectangle")
            		.transition()
 	            .attr("height", function(d){
-					return Math.abs(y(d[selection]) - y(0));
+					return height - y(+d[selection.value]);
 				})
 				.attr("x", function(d, i){
 					return (width / data.length) * i ;
 				})
 				.attr("y", function(d){
-					if (d[selection] > 0){
-		                return y(d[selection]);
-		            }
-					else {
-		                return y(0);
-		            }
-					})
+					return y(+d[selection.value]);
+				})
            		.ease("linear")
            		.select("title")
            		.text(function(d){
@@ -158,10 +153,6 @@ d3.csv("SST.csv", function(error, data){
 
 
 });
-function type(d) {
-    d.Celsius = +d.Celsius;
-    return d;
-}
 
 </script>
 </body>
