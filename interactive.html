@@ -43,7 +43,7 @@
       </div>
     </div>
     <script>
-            // set the dimensions and margins of the graph
+      d3.csv("SST.csv", function(error, data) {      // set the dimensions and margins of the graph
       var margin = {top:50, right: 20, bottom: 50, left: 50},
           width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
@@ -71,15 +71,15 @@
                 "translate(" + margin.left + "," + margin.top + ")");
 
       // Get the data
-      d3.csv("SST.csv", function(error, data) {
+
         if (error) throw error;
         var body = d3.select('body');
+        console.log(body);
         var headerNames = d3.keys(data[0]);
-        console.log(headerNames);
         // format the data
         data.forEach(function(d) {
             d.Year = parseTime(d.Year);
-            d.Glob = +d.Glob;
+            d.Glob = d.Glob;
         });
 
         // Scale the range of the data
