@@ -46,7 +46,7 @@
 								 <p> Now you can use the drop-down menu on the top of this page to see a deviations of sea-surface temperatures based on a range of latitudes.
 									</p>
 								<p>
-									 You can hover over the Annotation bubbles to see more insight about the graph.
+									 You can hover over the bars to see more more information about the visualization.
 								</p>
 						 </div>
 					 </div>
@@ -63,13 +63,20 @@ var svg = d3.select("body").append("svg")
     .attr("height", height + margin.top + margin.bottom)
 	.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-svg.append("text")
+	svg.append("text")
 				.attr("x", (width / 2))
 				.attr("y", 0 - (margin.top / 2))
 				.attr("text-anchor", "middle")
 				.style("font-size", "16px")
 				.style("text-decoration", "underline")
-				.text("Sea Surface Temperature Changes");
+				.text("Sea Surface Temperature Deviations from Average Temperature");
+	svg.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 0 - margin.left)
+		.attr("x",0 - (height / 2))
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.text("Deviations from Average Temperature");
 d3.csv("SST.csv", function(error, data){
 
 	// filter year
