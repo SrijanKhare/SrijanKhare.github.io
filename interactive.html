@@ -47,7 +47,6 @@
       var margin = {top:50, right: 20, bottom: 50, left: 50},
           width = 960 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
-
       // parse the date / time
       var parseTime = d3.timeParse("%Y");
 
@@ -71,11 +70,13 @@
                 "translate(" + margin.left + "," + margin.top + ")");
 
       // Get the data
-
-        if (error) throw error;
+      var elements = Object.keys(data[0])
+            .filter(function(d){
+              return ((d != "Year"));
+            })
         var body = d3.select('body');
         console.log(body);
-        var headerNames = d3.keys(data[0]);
+        var headerNames = elements[0];
         // format the data
         data.forEach(function(d) {
             d.Year = parseTime(d.Year);
