@@ -158,6 +158,10 @@ d3.csv("SST.csv", function(error, data){
 
 
 });
+function type(d) {
+    d.Celsius = +d.Celsius;
+    return d;
+}
 
 </script>
 </body>
