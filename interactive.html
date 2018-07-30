@@ -79,7 +79,7 @@
         // format the data
         data.forEach(function(d) {
             d.Year = parseTime(d.Year);
-            d.Glob = d.Glob;
+            d.Glob = +d.Glob;
         });
 
         // Scale the range of the data
