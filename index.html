@@ -130,6 +130,16 @@
         	.style("z-index", "10")
         	.style("visibility", "hidden")
         	.text("The average temperature used to standardize the deviations is the average global temperature from 1951-1980");
+
+
+        var tooltip2 = d3.select("body")
+        	.append("div")
+        	.style("position", "absolute")
+        	.style("z-index", "10")
+        	.style("visibility", "hidden")
+        	.text("There is an increase rate of change in deviations starting around the 1970s");
+
+
         svg.append("circle")
         .attr("stroke", "black")
       	.attr("fill", "aliceblue")
@@ -139,6 +149,16 @@
       	.on("mouseover", function(){return tooltip.style("visibility", "visible");})
       	.on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
       	.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+
+        svg.append("circle")
+        .attr("stroke", "black")
+        .attr("fill", "aliceblue")
+        .attr("r", 10)
+        .attr("cx", 700)
+        .attr("cy", 50)
+        .on("mouseover", function(){return tooltip2.style("visibility", "visible");})
+        .on("mousemove", function(){return tooltip2.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+        .on("mouseout", function(){return tooltip2.style("visibility", "hidden");});
 
 
         });
