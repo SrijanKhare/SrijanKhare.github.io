@@ -37,14 +37,13 @@ var svg = d3.select("body").append("svg")
 	.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("test.tsv", function(error, data){
+d3.tsv("SST.csv", function(error, data){
 
 	// filter year
-	var data = data.filter(function(d){return d.State == 'ALABAMA';});
 	// Get every column value
 	var elements = Object.keys(data[0])
 		.filter(function(d){
-			return ((d != "Year") & (d != "State"));
+			return ((d != "Year"));
 		});
 	var selection = elements[0];
 
