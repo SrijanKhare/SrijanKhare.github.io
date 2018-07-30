@@ -43,7 +43,7 @@
 						 </div>
 						 <div class="col-md-8">
 								 <h2 id="subtitle">Information</h3>
-								 <p> Now you can use the drop-down menu to see a deviations of sea-surface temperatures based on a range of latitudes.
+								 <p> Now you can use the drop-down menu on the top of this page to see a deviations of sea-surface temperatures based on a range of latitudes.
 									</p>
 								<p>
 									 You can hover over the Annotation bubbles to see more insight about the graph.
@@ -136,9 +136,9 @@ return +d[selection];})])
 		});
 
 	var selector = d3.select("#drop")
+			.attr("y", 0 - margin.left)
     	.append("select")
     	.attr("id","dropdown")
-			.attr("y", 300)
     	.on("change", function(d){
         	selection = document.getElementById("dropdown");
 					console.log(selection.value)
