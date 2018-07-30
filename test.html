@@ -97,7 +97,8 @@ d3.csv("SST.csv", function(error, data){
 		.attr("y", function(d){
 			if (d[selection] > 0){
                 return y(d[selection]);
-            } else {
+            }
+			else {
                 return y(0);
             }
 		})
@@ -128,7 +129,13 @@ d3.csv("SST.csv", function(error, data){
 					return (width / data.length) * i ;
 				})
 				.attr("y", function(d){
-					return y(+d[selection.value]);
+					if (d[selection] > 0){
+										return y(d[selection.value]);
+								}
+					else {
+										console.log(y(0))
+										return y(0);
+								}
 				})
            		.ease("linear")
            		.select("title")
