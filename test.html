@@ -130,7 +130,7 @@ d3.csv("SST.csv", function(error, data){
 					return (width / data.length) * i ;
 				})
 				.attr("y", function(d){
-					if (d[selection] > 0){
+					if (d[selection.value] > 0){
 										return y(d[selection.value]);
 								}
 					else {
