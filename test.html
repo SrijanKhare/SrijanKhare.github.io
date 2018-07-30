@@ -40,7 +40,7 @@ var svg = d3.select("body").append("svg")
 d3.tsv("test.tsv", function(error, data){
 
 	// filter year
-	var data = data.filter(function(d){return d.Year == '2012';});
+	var data = data.filter(function(d){return d.State == 'ALABAMA';});
 	// Get every column value
 	var elements = Object.keys(data[0])
 		.filter(function(d){
@@ -55,7 +55,7 @@ d3.tsv("test.tsv", function(error, data){
 			.range([height, 0]);
 
 	var x = d3.scale.ordinal()
-			.domain(data.map(function(d){ return d.State;}))
+			.domain(data.map(function(d){ return d.Year;}))
 			.rangeBands([0, width]);
 
 
@@ -100,7 +100,7 @@ d3.tsv("test.tsv", function(error, data){
 		})
 		.append("title")
 		.text(function(d){
-			return d.State + " : " + d[selection];
+			return d.Year + " : " + d[selection];
 		});
 
 	var selector = d3.select("#drop")
@@ -128,7 +128,7 @@ d3.tsv("test.tsv", function(error, data){
            		.ease("linear")
            		.select("title")
            		.text(function(d){
-           			return d.State + " : " + d[selection.value];
+           			return d.Year + " : " + d[selection.value];
            		});
 
            	d3.selectAll("g.y.axis")
