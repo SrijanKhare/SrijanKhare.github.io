@@ -113,8 +113,9 @@ d3.csv("SST.csv", function(error, data){
     	.on("change", function(d){
         	selection = document.getElementById("dropdown");
 
-        	y.domain([d3.min(data, function(d) {return d[selection.value];}), d3.max(data, function(d){
-							return +d[selection.value];})]);
+					y.domain(d3.extent(data, function(d) {
+						return d[selection]
+					}))
 
         	yAxis.scale(y);
 
