@@ -48,8 +48,8 @@ d3.csv("SST.csv", function(error, data){
 	var selection = elements[0];
 
 	var y = d3.scale.linear()
-	.domain([d3.min(data, function(d) {return -d[selection.value]}), d3.max(data, function(d){
-return +d[selection.value];})])
+	.domain([d3.min(data, function(d) {return -d[selection]}), d3.max(data, function(d){
+return +d[selection];})])
 			.range([height, 0]);
 
 	var x = d3.scale.ordinal()
