@@ -48,7 +48,7 @@ d3.csv("SST.csv", function(error, data){
 	var selection = elements[0];
 
 	var y = d3.scale.linear()
-			.domain([0, d3.max(data, function(d){
+			.domain([d3.min(data, function(d) {return d[selection]}), d3.max(data, function(d){
 				return +d[selection];
 			})])
 			.range([height, 0]);
