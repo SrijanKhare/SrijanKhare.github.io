@@ -138,6 +138,7 @@ return +d[selection];})])
 	var selector = d3.select("#drop")
     	.append("select")
     	.attr("id","dropdown")
+			.attr("y", 300)
     	.on("change", function(d){
         	selection = document.getElementById("dropdown");
 					console.log(selection.value)
