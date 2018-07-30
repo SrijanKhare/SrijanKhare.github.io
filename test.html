@@ -96,7 +96,7 @@ d3.csv("SST.csv", function(error, data){
 		})
 		.attr("y", function(d){
 			if (d[selection] > 0){
-                return y(d[selection];
+                return y(d[selection]);
             } else {
                 return y(0);
             }
