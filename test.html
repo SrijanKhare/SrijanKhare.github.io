@@ -121,7 +121,7 @@ d3.csv("SST.csv", function(error, data){
         	d3.selectAll(".rectangle")
            		.transition()
 	            .attr("height", function(d){
-					return Math.abs(y(d[selection]) - y(0)));
+					return Math.abs(y(d[selection]) - y(0))s;
 				})
 				.attr("x", function(d, i){
 					return (width / data.length) * i ;
