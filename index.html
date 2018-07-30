@@ -129,13 +129,13 @@
         	.style("position", "absolute")
         	.style("z-index", "10")
         	.style("visibility", "hidden")
-        	.text("a simple tooltip");
+        	.text("The average temperature used to standardize the deviations is the average global temperature from 1951-1980");
         svg.append("circle")
         .attr("stroke", "black")
       	.attr("fill", "aliceblue")
-      	.attr("r", 50)
-      	.attr("cx", 52)
-      	.attr("cy", 52)
+      	.attr("r", 10)
+      	.attr("cx", 400)
+      	.attr("cy", 50)
       	.on("mouseover", function(){return tooltip.style("visibility", "visible");})
       	.on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
       	.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
